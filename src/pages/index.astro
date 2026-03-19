@@ -9,6 +9,7 @@ import ServicesSection from '../components/ServicesSection.astro';
 import BenefitsSection from '../components/BenefitsSection.astro';
 import Footer from '../components/Footer.astro';
 import { siteConfig } from '../config/site';
+const { socialLinks } = siteConfig;
 ---
 
 <BaseLayout
@@ -47,31 +48,40 @@ import { siteConfig } from '../config/site';
       text="Mountain Green entstand aus einem europäischen Netzwerk von Cannabis-Pionieren mit Erfahrung in Landwirtschaft, Vertrieb und Kapitalmärkten. Das Projekt verbindet moderne Agrartechnologie mit professioneller Weiterverarbeitung."
       locationLabel="Standort Gurktal, Kärnten"
       locationDetail="Der Standort im Gurktal bietet ideale klimatische Bedingungen für hochwertigen Cannabis-Anbau."
+      ctaText="Kontakt aufnehmen"
+      ctaHref="/kontakt"
     />
 
     <ServicesSection
       heading="Unsere Leistungen"
+      ctaText="Jetzt Partner werden"
+      ctaHref="/kontakt"
       services={[
         {
           icon: "sprout",
           title: "Anbau",
-          description: "Professioneller Cannabis-Anbau unter kontrollierten Bedingungen. Fokus auf stabile Erträge, hohe Pflanzenqualität und nachvollziehbare Herkunft gemäß modernen Agrarstandards."
+          description: "Professioneller Cannabis-Anbau unter kontrollierten Bedingungen. Fokus auf stabile Erträge, hohe Pflanzenqualität und nachvollziehbare Herkunft gemäß modernen Agrarstandards.",
+          imagePlaceholder: "Bild: Cannabis-Anbau"
         },
         {
           icon: "flask",
           title: "Veredelung",
-          description: "Hochwertige Cannabis-Extrakte und Rohstoffe aus geernteter Biomasse. Standardisierte Öle, Extrakte und Inhaltsstoffe mit gleichbleibender industrieller Qualität."
+          description: "Hochwertige Cannabis-Extrakte und Rohstoffe aus geernteter Biomasse. Standardisierte Öle, Extrakte und Inhaltsstoffe mit gleichbleibender industrieller Qualität.",
+          imagePlaceholder: "Bild: Extraktionsprozess"
         },
         {
           icon: "package",
           title: "Produktion & Verkauf",
-          description: "Marktfähige Cannabisprodukte für Handel, Gesundheitsbereich und Markenlösungen. Vertrieb über Partner-Netzwerke und White-Label-Kanäle."
+          description: "Marktfähige Cannabisprodukte für Handel, Gesundheitsbereich und Markenlösungen. Vertrieb über Partner-Netzwerke und White-Label-Kanäle.",
+          imagePlaceholder: "Bild: Fertige Produkte"
         }
       ]}
     />
 
     <BenefitsSection
       sectionHeading="Für Partner und Konsumenten"
+      ctaText="Angebot anfragen"
+      ctaHref="/kontakt"
       b2b={{
         badge: "B2B",
         heading: "White-Label & Partnerlösungen",
@@ -101,5 +111,6 @@ import { siteConfig } from '../config/site';
     companyName="Mountain Green"
     imprintHref="/impressum"
     imprintLabel="Impressum"
+    socialLinks={socialLinks}
   />
 </BaseLayout>

@@ -4,9 +4,11 @@ interface Props {
   text: string;
   locationLabel: string;
   locationDetail: string;
+  ctaText?: string;
+  ctaHref?: string;
 }
 
-const { heading, text, locationLabel, locationDetail } = Astro.props;
+const { heading, text, locationLabel, locationDetail, ctaText, ctaHref } = Astro.props;
 ---
 
 <section aria-labelledby="about-heading" class="bg-white py-24 sm:py-32">
@@ -27,6 +29,15 @@ const { heading, text, locationLabel, locationDetail } = Astro.props;
         <p class="mt-6 text-lg leading-relaxed text-neutral-700" style="line-height: 1.7;">
           {text}
         </p>
+        {ctaText && ctaHref && (
+          <a
+            href={ctaHref}
+            class="mt-8 inline-flex items-center gap-2 rounded-xl bg-green-600 px-6 py-3 font-body text-sm font-medium text-white shadow-sm transition-all duration-200 hover:bg-green-800 hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600"
+          >
+            {ctaText}
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+          </a>
+        )}
       </div>
 
       <!-- Location Card -->

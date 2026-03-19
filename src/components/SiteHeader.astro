@@ -17,15 +17,15 @@ const { logoSrc, logoAlt, menuItems } = Astro.props;
   id="site-header"
   class="sticky top-0 z-40 bg-white/95 backdrop-blur-sm shadow-sm transition-all duration-300"
 >
-  <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 transition-all duration-300 sm:px-8 lg:px-12" id="header-inner">
+  <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-5 transition-all duration-300 sm:px-8 lg:px-12" id="header-inner">
     <!-- Logo -->
     <a href="/" class="shrink-0">
       <img
         src={logoSrc}
         alt={logoAlt}
-        width="160"
-        height="40"
-        class="h-10 w-auto transition-all duration-300"
+        width="320"
+        height="80"
+        class="h-20 w-auto transition-all duration-300"
         id="header-logo"
       />
     </a>
@@ -99,7 +99,7 @@ const { logoSrc, logoAlt, menuItems } = Astro.props;
 
     headerInner.style.paddingTop = scrolled ? '0.5rem' : '';
     headerInner.style.paddingBottom = scrolled ? '0.5rem' : '';
-    logo.style.height = scrolled ? '1.75rem' : '';
+    logo.style.height = scrolled ? '2.5rem' : '';
 
     if (bar) {
       if (y > 10) {

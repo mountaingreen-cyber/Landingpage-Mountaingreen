@@ -4,6 +4,7 @@ import AnnouncementBar from '../components/AnnouncementBar.astro';
 import SiteHeader from '../components/SiteHeader.astro';
 import Footer from '../components/Footer.astro';
 import { siteConfig } from '../config/site';
+const { socialLinks } = siteConfig;
 ---
 
 <BaseLayout
@@ -83,5 +84,6 @@ import { siteConfig } from '../config/site';
     companyName="Mountain Green"
     imprintHref="/impressum"
     imprintLabel="Impressum"
+    socialLinks={socialLinks}
   />
 </BaseLayout>
