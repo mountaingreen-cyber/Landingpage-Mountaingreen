@@ -1,6 +1,4 @@
 ---
-import FadeIn from './motion/FadeIn';
-
 interface Props {
   heading: string;
   text: string;
@@ -15,26 +13,24 @@ const { heading, text, locationLabel, locationDetail } = Astro.props;
   <div class="mx-auto max-w-6xl px-6 sm:px-8 lg:px-12">
     <div class="grid gap-12 lg:grid-cols-2 lg:gap-16 items-center">
       <!-- Text Column -->
-      <FadeIn client:visible direction="left">
-        <div>
-          <span class="mb-4 inline-block rounded-full bg-green-100 px-4 py-1.5 font-body text-xs font-medium uppercase tracking-widest text-green-800">
-            Über uns
-          </span>
-          <h2
-            id="about-heading"
-            class="mt-2 font-heading text-3xl font-bold tracking-tight text-green-800 sm:text-4xl"
-            style="letter-spacing: -0.02em;"
-          >
-            {heading}
-          </h2>
-          <p class="mt-6 text-lg leading-relaxed text-neutral-700" style="line-height: 1.7;">
-            {text}
-          </p>
-        </div>
-      </FadeIn>
+      <div data-animate="left">
+        <span class="mb-4 inline-block rounded-full bg-green-100 px-4 py-1.5 font-body text-xs font-medium uppercase tracking-widest text-green-800">
+          Über uns
+        </span>
+        <h2
+          id="about-heading"
+          class="mt-2 font-heading text-3xl font-bold tracking-tight text-green-800 sm:text-4xl"
+          style="letter-spacing: -0.02em;"
+        >
+          {heading}
+        </h2>
+        <p class="mt-6 text-lg leading-relaxed text-neutral-700" style="line-height: 1.7;">
+          {text}
+        </p>
+      </div>
 
       <!-- Location Card -->
-      <FadeIn client:visible direction="right" delay={0.15}>
+      <div data-animate="right" data-delay="1">
         <div class="rounded-2xl border border-green-100 bg-green-50 p-8 shadow-sm">
           <div class="flex items-start gap-4">
             <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-green-600 text-white" aria-hidden="true">
@@ -53,7 +49,7 @@ const { heading, text, locationLabel, locationDetail } = Astro.props;
             </div>
           </div>
         </div>
-      </FadeIn>
+      </div>
     </div>
   </div>
 </section>

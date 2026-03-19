@@ -1,6 +1,4 @@
 ---
-import FadeIn from './motion/FadeIn';
-
 interface BenefitColumn {
   badge: string;
   heading: string;
@@ -20,25 +18,23 @@ const { sectionHeading, b2b, b2c } = Astro.props;
 <section aria-labelledby="benefits-heading" class="bg-white py-24 sm:py-32">
   <div class="mx-auto max-w-6xl px-6 sm:px-8 lg:px-12">
     <!-- Section Header -->
-    <FadeIn client:visible direction="up">
-      <div class="text-center">
-        <span class="mb-4 inline-block rounded-full bg-green-100 px-4 py-1.5 font-body text-xs font-medium uppercase tracking-widest text-green-800">
-          Ihr Nutzen
-        </span>
-        <h2
-          id="benefits-heading"
-          class="mt-2 font-heading text-3xl font-bold tracking-tight text-green-800 sm:text-4xl"
-          style="letter-spacing: -0.02em;"
-        >
-          {sectionHeading}
-        </h2>
-      </div>
-    </FadeIn>
+    <div data-animate="up" class="text-center">
+      <span class="mb-4 inline-block rounded-full bg-green-100 px-4 py-1.5 font-body text-xs font-medium uppercase tracking-widest text-green-800">
+        Ihr Nutzen
+      </span>
+      <h2
+        id="benefits-heading"
+        class="mt-2 font-heading text-3xl font-bold tracking-tight text-green-800 sm:text-4xl"
+        style="letter-spacing: -0.02em;"
+      >
+        {sectionHeading}
+      </h2>
+    </div>
 
     <!-- Two Column Layout -->
     <div class="mt-16 grid gap-8 lg:grid-cols-2">
       {[b2b, b2c].map((col, i) => (
-        <FadeIn client:visible direction={i === 0 ? 'left' : 'right'} delay={i * 0.15}>
+        <div data-animate={i === 0 ? 'left' : 'right'} data-delay={String(i + 1)}>
           <div class="h-full rounded-2xl border border-green-100 bg-green-50 p-8 sm:p-10">
             <span class="inline-block rounded-full bg-green-600 px-3 py-1 font-body text-xs font-medium uppercase tracking-widest text-white">
               {col.badge}
@@ -60,7 +56,7 @@ const { sectionHeading, b2b, b2c } = Astro.props;
               ))}
             </ul>
           </div>
-        </FadeIn>
+        </div>
       ))}
     </div>
   </div>
