@@ -1,4 +1,6 @@
 ---
+import FadeIn from './motion/FadeIn';
+
 interface Props {
   headline: string;
   pitch: string;
@@ -24,44 +26,54 @@ const { headline, pitch, ctaText, ctaHref, logoSrc, logoAlt } = Astro.props;
   <div class="relative mx-auto w-full max-w-6xl px-6 py-20 sm:px-8 lg:px-12">
     <div class="flex flex-col items-center text-center lg:items-start lg:text-left">
       <!-- Logo -->
-      <img
-        src={logoSrc}
-        alt={logoAlt}
-        width="180"
-        height="48"
-        class="mb-8 h-12 w-auto"
-        fetchpriority="high"
-      />
+      <FadeIn client:load delay={0} direction="none">
+        <img
+          src={logoSrc}
+          alt={logoAlt}
+          width="180"
+          height="48"
+          class="mb-8 h-12 w-auto"
+          fetchpriority="high"
+        />
+      </FadeIn>
 
       <!-- Badge -->
-      <span class="mb-6 inline-block rounded-full bg-green-100 px-4 py-1.5 font-body text-xs font-medium uppercase tracking-widest text-green-800">
-        Vom Anbau bis zum Produkt
-      </span>
+      <FadeIn client:load delay={0.1} direction="up">
+        <span class="mb-6 inline-block rounded-full bg-green-100 px-4 py-1.5 font-body text-xs font-medium uppercase tracking-widest text-green-800">
+          Vom Anbau bis zum Produkt
+        </span>
+      </FadeIn>
 
       <!-- Headline -->
-      <h1
-        id="hero-heading"
-        class="max-w-3xl font-heading text-4xl font-bold leading-tight tracking-tight text-green-800 sm:text-5xl lg:text-6xl"
-        style="letter-spacing: -0.02em;"
-      >
-        {headline}
-      </h1>
+      <FadeIn client:load delay={0.2} direction="up">
+        <h1
+          id="hero-heading"
+          class="max-w-3xl font-heading text-4xl font-bold leading-tight tracking-tight text-green-800 sm:text-5xl lg:text-6xl"
+          style="letter-spacing: -0.02em;"
+        >
+          {headline}
+        </h1>
+      </FadeIn>
 
       <!-- Pitch -->
-      <p class="mt-6 max-w-2xl text-lg leading-relaxed text-neutral-700 sm:text-xl" style="line-height: 1.7;">
-        {pitch}
-      </p>
+      <FadeIn client:load delay={0.35} direction="up">
+        <p class="mt-6 max-w-2xl text-lg leading-relaxed text-neutral-700 sm:text-xl" style="line-height: 1.7;">
+          {pitch}
+        </p>
+      </FadeIn>
 
       <!-- CTA -->
-      <a
-        href={ctaHref}
-        class="mt-10 inline-flex items-center gap-2 rounded-xl bg-green-600 px-8 py-4 font-body text-base font-medium text-white shadow-sm transition-all duration-200 hover:bg-green-800 hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600"
-      >
-        {ctaText}
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="m9 18 6-6-6-6"/>
-        </svg>
-      </a>
+      <FadeIn client:load delay={0.5} direction="up">
+        <a
+          href={ctaHref}
+          class="mt-10 inline-flex items-center gap-2 rounded-xl bg-green-600 px-8 py-4 font-body text-base font-medium text-white shadow-sm transition-all duration-200 hover:bg-green-800 hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600"
+        >
+          {ctaText}
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="m9 18 6-6-6-6"/>
+          </svg>
+        </a>
+      </FadeIn>
     </div>
   </div>
 </section>

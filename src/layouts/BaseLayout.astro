@@ -2,9 +2,34 @@
 interface Props {
   title: string;
   description: string;
+  canonicalUrl?: string;
+  ogImage?: string;
 }
 
-const { title, description } = Astro.props;
+const { title, description, canonicalUrl, ogImage = '/images/logo/mountaingreen_logo.webp' } = Astro.props;
+const siteUrl = canonicalUrl || Astro.url.href;
+
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Mountain Green',
+  url: siteUrl,
+  logo: new URL(ogImage, Astro.site || 'https://mountaingreen.at').href,
+  description: 'Vertikal integrierter Cannabis-Produzent – Anbau, Extraktion und Vertrieb hochwertiger Cannabis-Rohstoffe und Extrakte.',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Gurktal',
+    addressRegion: 'Kärnten',
+    addressCountry: 'AT',
+  },
+};
+
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'Mountain Green',
+  url: siteUrl,
+};
 ---
 
 <!doctype html>
@@ -13,9 +38,36 @@ const { title, description } = Astro.props;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={siteUrl} />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
+    <link rel="icon" type="image/webp" href="/images/logo/mountaingreen_logo.webp" />
+    <link rel="apple-touch-icon" href="/images/logo/mountaingreen_logo.webp" />
+
+    <!-- Font Preloads -->
     <link rel="preload" href="/fonts/plus-jakarta-sans/PlusJakartaSans-Bold.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/inter/Inter-Regular.woff2" as="font" type="font/woff2" crossorigin />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={siteUrl} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:locale" content="de_AT" />
+    <meta property="og:site_name" content="Mountain Green" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
+
     <title>{title}</title>
   </head>
   <body class="bg-neutral-50 font-body text-neutral-700 antialiased">
