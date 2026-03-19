@@ -111,6 +111,8 @@ Nach dem Erstellen oder Ändern einer Frontend-Komponente automatisch in dieser 
 - `/baseline-ui` – Basis-UI-Qualität sicherstellen: Konsistenz, Proportionen, Responsive-Verhalten
 - `/fixing-accessibility` – ARIA-Labels, Kontrastverhältnisse (WCAG AA), Tastaturnavigation
 - `/fixing-motion-performance` – Animationen auf `prefers-reduced-motion` prüfen, CSS-only bevorzugen, keine Layout-Thrashing-Effekte
+- `/legal-compliance-at` – Österreichische Rechtskonformität: DSGVO-Fonts, TKG 2021 Opt-in, AT-Lokalisierung, Impressum (ECG/MedienG/UGB), Tracking/Consent
+- `/seo-semantic-master` – SEO-Qualität: Heading-Hierarchie, semantische HTML-Tags, Meta-Daten, JSON-LD Schemas, Bild-Optimierung, Core Web Vitals
 
 > ⚠️ Dieser Workflow ist **nicht optional** – er gilt für jede Komponente, auch für kleine Änderungen.
 
