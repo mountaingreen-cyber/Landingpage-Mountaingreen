@@ -1,77 +1,61 @@
 ---
 interface Props {
   headline: string;
-  pitch: string;
-  ctaText: string;
-  ctaHref: string;
-  logoSrc: string;
-  logoAlt: string;
+  subline: string;
+  images: { src: string; alt: string }[];
 }
 
-const { headline, pitch, ctaText, ctaHref, logoSrc, logoAlt } = Astro.props;
+const { headline, subline, images } = Astro.props;
 ---
 
-<section
-  aria-labelledby="hero-heading"
-  class="relative flex min-h-[85vh] items-center overflow-hidden bg-neutral-50"
->
-  <!-- Subtle decorative background -->
-  <div class="pointer-events-none absolute inset-0" aria-hidden="true">
-    <div class="absolute -right-32 -top-32 h-[500px] w-[500px] rounded-full bg-green-100/60 blur-3xl"></div>
-    <div class="absolute -bottom-24 -left-24 h-[400px] w-[400px] rounded-full bg-green-50/80 blur-3xl"></div>
-  </div>
+<section aria-labelledby="hero-heading" class="relative h-[85vh] min-h-[500px] overflow-hidden">
+  <!-- Slideshow Images -->
+  {images.map((img, i) => (
+    <img
+      src={img.src}
+      alt={img.alt}
+      class:list={[
+        'hero-slide absolute inset-0 h-full w-full object-cover transition-opacity duration-1000',
+        i === 0 ? 'opacity-100' : 'opacity-0',
+      ]}
+      data-slide={i}
+      fetchpriority={i === 0 ? 'high' : undefined}
+      loading={i === 0 ? 'eager' : 'lazy'}
+      decoding={i === 0 ? 'sync' : 'async'}
+    />
+  ))}
 
-  <div class="relative mx-auto w-full max-w-6xl px-6 py-20 sm:px-8 lg:px-12">
-    <div class="flex flex-col items-center text-center lg:items-start lg:text-left">
-      <!-- Logo -->
-      <div data-animate="fade" data-delay="0">
-        <img
-          src={logoSrc}
-          alt={logoAlt}
-          width="180"
-          height="48"
-          class="mb-8 h-12 w-auto"
-          fetchpriority="high"
-        />
-      </div>
+  <!-- Dark overlay for text readability -->
+  <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/10" aria-hidden="true"></div>
 
-      <!-- Badge -->
-      <div data-animate="up" data-delay="1">
-        <span class="mb-6 inline-block rounded-full bg-green-100 px-4 py-1.5 font-body text-xs font-medium uppercase tracking-widest text-green-800">
-          Vom Anbau bis zum Produkt
-        </span>
-      </div>
-
-      <!-- Headline -->
-      <div data-animate="up" data-delay="2">
-        <h1
-          id="hero-heading"
-          class="max-w-3xl font-heading text-4xl font-bold leading-tight tracking-tight text-green-800 sm:text-5xl lg:text-6xl"
-          style="letter-spacing: -0.02em;"
-        >
-          {headline}
-        </h1>
-      </div>
-
-      <!-- Pitch -->
-      <div data-animate="up" data-delay="3">
-        <p class="mt-6 max-w-2xl text-lg leading-relaxed text-neutral-700 sm:text-xl" style="line-height: 1.7;">
-          {pitch}
-        </p>
-      </div>
-
-      <!-- CTA -->
-      <div data-animate="up" data-delay="4">
-        <a
-          href={ctaHref}
-          class="mt-10 inline-flex items-center gap-2 rounded-xl bg-green-600 px-8 py-4 font-body text-base font-medium text-white shadow-sm transition-all duration-200 hover:bg-green-800 hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600"
-        >
-          {ctaText}
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="m9 18 6-6-6-6"/>
-          </svg>
-        </a>
-      </div>
+  <!-- Text Overlay -->
+  <div class="absolute inset-0 flex items-end justify-center pb-24 sm:items-center sm:pb-0">
+    <div class="px-6 text-center">
+      <h1
+        id="hero-heading"
+        class="font-heading text-4xl font-bold leading-tight text-amber-50 drop-shadow-lg sm:text-5xl lg:text-6xl"
+        style="letter-spacing: -0.01em; text-shadow: 0 2px 16px rgba(0,0,0,0.5);"
+      >
+        {headline}
+      </h1>
+      <p
+        class="mx-auto mt-4 max-w-xl text-lg text-amber-100/90 drop-shadow-md sm:text-xl"
+        style="text-shadow: 0 1px 8px rgba(0,0,0,0.5); line-height: 1.7;"
+      >
+        {subline}
+      </p>
     </div>
   </div>
 </section>
+
+<script>
+  const slides = document.querySelectorAll<HTMLImageElement>('.hero-slide');
+  if (slides.length > 1) {
+    let current = 0;
+    setInterval(() => {
+      slides[current].classList.replace('opacity-100', 'opacity-0');
+      current = (current + 1) % slides.length;
+      slides[current].classList.replace('opacity-0', 'opacity-100');
+    }, 5000);
+  }
+</script>

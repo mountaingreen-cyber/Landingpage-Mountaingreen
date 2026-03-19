@@ -1,0 +1,17 @@
+---
+interface Props {
+  text: string;
+}
+
+const { text } = Astro.props;
+---
+
+<div
+  id="announcement-bar"
+  class="bg-green-950 py-2 text-center text-sm font-medium text-white transition-all duration-300"
+  role="banner"
+>
+  <div class="mx-auto max-w-6xl px-6">
+    {text}
+  </div>
+</div>

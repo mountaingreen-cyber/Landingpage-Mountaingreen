@@ -1,24 +1,45 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import AnnouncementBar from '../components/AnnouncementBar.astro';
+import SiteHeader from '../components/SiteHeader.astro';
 import HeroSection from '../components/HeroSection.astro';
+import WhoWeAreSection from '../components/WhoWeAreSection.astro';
 import AboutSection from '../components/AboutSection.astro';
 import ServicesSection from '../components/ServicesSection.astro';
 import BenefitsSection from '../components/BenefitsSection.astro';
 import Footer from '../components/Footer.astro';
+import { siteConfig } from '../config/site';
 ---
 
 <BaseLayout
   title="Mountain Green – Cannabis-Rohstoffe & Extrakte"
   description="Mountain Green ist ein vertikal integrierter Produzent hochwertiger Cannabis-Rohstoffe und Extrakte für Medizin, Industrie und Konsumprodukte."
 >
+  {siteConfig.announcementBar.enabled && (
+    <AnnouncementBar text={siteConfig.announcementBar.text} />
+  )}
+
+  <SiteHeader
+    logoSrc="/images/logo/mountaingreen_logo.webp"
+    logoAlt="Mountain Green Logo"
+    menuItems={[{ label: 'Kontakt', href: '/kontakt' }]}
+  />
+
   <main>
     <HeroSection
-      headline="Mountain Green"
-      pitch="Vertikal integrierter Produzent hochwertiger Cannabis-Rohstoffe und Extrakte für Medizin, Industrie und Konsumprodukte – vom Anbau bis zur marktfähigen Endlösung."
+      headline="Premium Hanfanbau aus dem Gurktal"
+      subline="Hochwertige Cannabisrohstoffe und Extrakte – vom Anbau bis zum fertigen Produkt."
+      images={[
+        { src: '/images/hero1.jpeg', alt: 'Cannabis-Ernte im Gurktal bei Sonnenuntergang' },
+        { src: '/images/hero2.jpeg', alt: 'Blick über Cannabis-Felder mit Bergpanorama' },
+      ]}
+    />
+
+    <WhoWeAreSection
+      heading="Mountain Green"
+      text="Vertikal integrierter Produzent hochwertiger Cannabis-Rohstoffe und Extrakte für Medizin, Industrie und Konsumprodukte – vom Anbau bis zur marktfähigen Endlösung."
       ctaText="Mehr erfahren"
       ctaHref="#leistungen"
-      logoSrc="/images/logo/mountaingreen_logo.webp"
-      logoAlt="Mountain Green Logo"
     />
 
     <AboutSection
