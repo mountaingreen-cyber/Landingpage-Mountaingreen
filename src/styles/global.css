@@ -7,11 +7,12 @@
 
   --color-green-50: #f0fdf4;
   --color-green-100: #dcfce7;
-  --color-green-600: #16a34a;
-  --color-green-800: #166534;
-  --color-green-950: #052e16;
-  --color-neutral-50: #fafafa;
+  --color-green-600: #054027;
+  --color-green-800: #054027;
+  --color-green-950: #054027;
+  --color-neutral-50: #F7F7F5;
   --color-neutral-700: #404040;
+  --color-white: #F7F7F5;
 }
 
 /* ── Scroll-triggered animations ── */
