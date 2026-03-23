@@ -21,8 +21,8 @@ const { heading, text, locationLabel, locationDetail, ctaText, ctaHref } = Astro
         </span>
         <h2
           id="about-heading"
-          class="mt-2 font-heading text-3xl font-bold tracking-tight text-green-800 sm:text-4xl"
-          style="letter-spacing: -0.02em;"
+          class="mt-2 font-heading text-[32px] font-normal tracking-tight text-green-800 sm:text-[38px]"
+          style="letter-spacing: -0.01em;"
         >
           {heading}
         </h2>
@@ -32,7 +32,7 @@ const { heading, text, locationLabel, locationDetail, ctaText, ctaHref } = Astro
         {ctaText && ctaHref && (
           <a
             href={ctaHref}
-            class="mt-8 inline-flex items-center gap-2 rounded-xl bg-green-600 px-6 py-3 font-body text-sm font-medium text-white shadow-sm transition-all duration-200 hover:bg-green-800 hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600"
+            class="mt-8 inline-flex items-center gap-2 rounded-xl bg-green-600 px-6 py-3 font-accent text-sm italic text-white shadow-sm transition-all duration-200 hover:bg-green-800 hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600"
           >
             {ctaText}
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
