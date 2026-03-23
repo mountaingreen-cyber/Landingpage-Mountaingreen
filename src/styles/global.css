@@ -2,9 +2,9 @@
 @import './fonts.css';
 
 @theme {
-  --font-body: 'Georgia', 'Times New Roman', 'Palatino', serif;
-  --font-heading: 'Palatino Linotype', 'Palatino', 'Book Antiqua', 'Georgia', serif;
-  --font-accent: 'Georgia', 'Times New Roman', serif;
+  --font-body: 'Calibri', 'Gill Sans', 'Trebuchet MS', sans-serif;
+  --font-heading: 'Constantia', 'Georgia', 'Cambria', serif;
+  --font-accent: 'Calibri', 'Gill Sans', 'Trebuchet MS', sans-serif;
 
   --color-green-50: #f0fdf4;
   --color-green-100: #dcfce7;
