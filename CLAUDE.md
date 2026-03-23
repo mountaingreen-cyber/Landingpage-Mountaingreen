@@ -34,12 +34,12 @@ Du hast Zugriff auf Puppeteer, um das visuelle Ergebnis deiner Arbeit zu prüfen
 |------------------|-----------|-----------------------------------|
 | `--green-50`     | #f0fdf4   | Hintergrundebenen, Cards          |
 | `--green-100`    | #dcfce7   | Subtile Highlights, Badges        |
-| `--green-600`    | #16a34a   | Primary CTAs, Icons, Akzente      |
-| `--green-800`    | #166534   | Headlines, Logofarbe              |
-| `--green-950`    | #052e16   | Footer-Hintergrund, dunkle Text   |
-| `--neutral-50`   | #fafafa   | Seitenbackground (hell)           |
+| `--green-600`    | #054027   | Primary CTAs, Icons, Akzente      |
+| `--green-800`    | #054027   | Headlines, Logofarbe              |
+| `--green-950`    | #054027   | Footer-Hintergrund, dunkle Text   |
+| `--neutral-50`   | #F7F7F5   | Seitenbackground (hell)           |
 | `--neutral-700`  | #404040   | Fließtext                         |
-| `--white`        | #ffffff   | Cards, Sektionshintergründe       |
+| `--white`        | #F7F7F5   | Cards, Sektionshintergründe       |
 
 ### Typography
 - Headlines (h1–h2): `Plus Jakarta Sans`, font-weight 700, letter-spacing -0.02em
@@ -48,7 +48,7 @@ Du hast Zugriff auf Puppeteer, um das visuelle Ergebnis deiner Arbeit zu prüfen
 - Labels / Badges: `Inter`, font-weight 500, uppercase, letter-spacing 0.08em
 
 ### Stil-Direktiven
-- Hell und clean: weißer Hintergrund (#fafafa), viel Whitespace
+- Hell und clean: weißer Hintergrund (#F7F7F5), viel Whitespace
 - Moderne Karten mit leichtem Schatten (`shadow-sm`) und abgerundeten Ecken (`rounded-2xl`)
 - Grüne Akzente gezielt einsetzen – kein Overuse
 - Keine dunklen Hintergründe außer Footer
@@ -71,9 +71,21 @@ Du hast Zugriff auf Puppeteer, um das visuelle Ergebnis deiner Arbeit zu prüfen
 
 ## Content (direkt verwendbar)
 
+### announcement bar
+Ganz oben soll ein dreiviertel Zentimeter dicker Balken horizontal mit dieser Farbe #054027 eingeblendet werden. Im balken soll ein Text als ankündigung stehen. Der Text soll weiss sein. Den Text soll man in einer Konfiguarationsdatei verändern können. Der Balken soll beim herunterscrollen smooth ausgeblendet werden.
+
+### sticky header 
+Unter dem grünen Balken soll dann ein weisser streifen mit dem Logo hinkommen. Das logo soll mit 160 * 160 zentriert angezeigt werden. Auf der rechten Seite des weissen Streifens soll ein Hamburger Menü gezeigt werden, auch für alle Geräte und im Web. Menüpunkte sollen rechtsbündig unter dem Hamburger Button aufgelistet werden. Der weisse Streifen soll beim runterscrollen kleiner werden, also weniger hoch, sodass das logo kleiner und das Hamburger Menü immer sichtbar sind.
+
+
+
 ### Hero – Pitch
-> Mountain Green ist ein vertikal integrierter Produzent hochwertiger Cannabis-Rohstoffe
-> und Extrakte für Medizin, Industrie und Konsumprodukte – vom Anbau bis zur marktfähigen Endlösung.
+In der Hero Sektion soll zuerst das Bild hero1.jpeg angezeigt werden und nach 5 Sekunden mit smoother Transition in hero2.jpg übergehen. Die Transitions sollen sich wiederholen. auf die Bilder soll jeweils der Text wie in image.png gelegt werden. Bitte Farbe, Positionierung und Schatten passend wählen damit die Lesbarkeit optimal ist.
+
+
+### Wer wir sind
+Eine Sektion "Wer wir sind" machen: Mountain Green
+Vertikal integrierter Produzent hochwertiger Cannabis-Rohstoffe und Extrakte für Medizin, Industrie und Konsumprodukte – vom Anbau bis zur marktfähigen Endlösung.
 
 ### Über uns
 Mountain Green entstand aus einem europäischen Netzwerk von Cannabis-Pionieren mit Erfahrung
@@ -91,6 +103,8 @@ Standardisierte Öle, Extrakte und Inhaltsstoffe mit gleichbleibender industriel
 **Produktion & Verkauf**: Marktfähige Cannabisprodukte für Handel, Gesundheitsbereich und
 Markenlösungen. Vertrieb über Partner-Netzwerke und White-Label-Kanäle.
 
+Gestalte die Boxen aus "Unsere Leistungen" so dass sie untereinander versetzt sind (2 Spalten) in die jeweils zweite Spalte gibst du bitte einen Platzhalter für ein Bild.
+
 ### B2B
 Unternehmen erhalten Zugang zu hochwertiger Cannabis-Biomasse und standardisierten Extrakten.
 Mountain Green ermöglicht Partnern den schnellen Einstieg in den Cannabinoid-Markt mit fertigen
@@ -101,6 +115,8 @@ Konsumenten erhalten geprüfte Cannabisprodukte mit nachvollziehbarer Herkunft.
 Natürliche Pflanzenstoffe kombiniert mit moderner Verarbeitungstechnologie.
 Hochwertige Produkte für Wohlbefinden, Balance und moderne Lebensstile.
 
+### Footer
+Gib in den Footer die Logos von Whatsapp, Instargram, TicTok und Youtube. Die Verlinkungen für die Logos hätte ich gerne in einem Konfigurationsfile.
 
 ## UI Workflow
 Nach dem Erstellen oder Ändern einer Frontend-Komponente automatisch in dieser Reihenfolge ausführen:
