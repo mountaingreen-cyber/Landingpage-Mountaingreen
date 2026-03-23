@@ -1,4 +1,4 @@
-/* Constantia & Calibri sind Microsoft-System-Fonts (seit Windows Vista/7).
-   Sie werden lokal vom Betriebssystem geladen – kein externer Download.
+/* Cambria & Trebuchet MS sind System-Fonts (Windows Vista+, macOS via Office).
+   Lokal vom Betriebssystem geladen – kein externer Download nötig.
    DSGVO-konform: Keine Datenübertragung an Drittserver.
-   Fallback-Ketten für macOS/Linux: Georgia → Cambria (Heading), Gill Sans → Trebuchet MS (Body). */
+   Fallbacks: Georgia / Times New Roman (Heading), Lucida Sans / Lucida Grande (Body). */

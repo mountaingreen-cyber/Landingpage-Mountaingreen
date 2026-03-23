@@ -2,9 +2,9 @@
 @import './fonts.css';
 
 @theme {
-  --font-body: 'Calibri', 'Gill Sans', 'Trebuchet MS', sans-serif;
-  --font-heading: 'Constantia', 'Georgia', 'Cambria', serif;
-  --font-accent: 'Calibri', 'Gill Sans', 'Trebuchet MS', sans-serif;
+  --font-body: 'Trebuchet MS', 'Lucida Sans', 'Lucida Grande', sans-serif;
+  --font-heading: 'Cambria', 'Georgia', 'Times New Roman', serif;
+  --font-accent: 'Cambria', 'Georgia', 'Times New Roman', serif;
 
   --color-green-50: #f0fdf4;
   --color-green-100: #dcfce7;
