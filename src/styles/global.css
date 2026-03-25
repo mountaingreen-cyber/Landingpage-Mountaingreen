@@ -2,9 +2,8 @@
 @import './fonts.css';
 
 @theme {
-  --font-body: 'Trebuchet MS', 'Lucida Sans', 'Lucida Grande', sans-serif;
-  --font-heading: 'Cambria', 'Georgia', 'Times New Roman', serif;
-  --font-accent: 'Cambria', 'Georgia', 'Times New Roman', serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-heading: 'Plus Jakarta Sans', system-ui, sans-serif;
 
   --color-green-50: #f0fdf4;
   --color-green-100: #dcfce7;
