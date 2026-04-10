@@ -4,17 +4,18 @@ interface BenefitColumn {
   heading: string;
   text: string;
   features: string[];
+  ctaText?: string;
+  ctaHref?: string;
+  ctaSubtext?: string;
 }
 
 interface Props {
   sectionHeading: string;
   b2b: BenefitColumn;
   b2c: BenefitColumn;
-  ctaText?: string;
-  ctaHref?: string;
 }
 
-const { sectionHeading, b2b, b2c, ctaText, ctaHref } = Astro.props;
+const { sectionHeading, b2b, b2c } = Astro.props;
 ---
 
 <section aria-labelledby="benefits-heading" class="bg-[#F7F7F5] py-24 sm:py-32">
@@ -36,8 +37,8 @@ const { sectionHeading, b2b, b2c, ctaText, ctaHref } = Astro.props;
     <!-- Two Column Layout -->
     <div class="mt-16 grid gap-8 lg:grid-cols-2">
       {[b2b, b2c].map((col, i) => (
-        <div data-animate={i === 0 ? 'left' : 'right'} data-delay={String(i + 1)}>
-          <div class="h-full rounded-2xl border border-green-100 bg-green-50 p-8 sm:p-10">
+        <div data-animate={i === 0 ? 'left' : 'right'} data-delay={String(i + 1)} class="h-full">
+          <div class="flex h-full flex-col rounded-2xl border border-green-100 bg-green-50 p-8 sm:p-10">
             <span class="inline-block rounded-full bg-green-600 px-3 py-1 font-body text-xs font-medium uppercase tracking-widest text-white">
               {col.badge}
             </span>
@@ -57,22 +58,24 @@ const { sectionHeading, b2b, b2c, ctaText, ctaHref } = Astro.props;
                 </li>
               ))}
             </ul>
+            {col.ctaText && col.ctaHref && (
+              <div class="mt-auto pt-8">
+                <a
+                  href={col.ctaHref}
+                  class="inline-flex items-center gap-2 rounded-xl bg-green-600 px-6 py-3 font-body text-sm font-medium text-white shadow-sm transition-all duration-200 hover:bg-green-800 hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600"
+                >
+                  {col.ctaText}
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+                </a>
+                {col.ctaSubtext && (
+                  <p class="mt-2 text-xs text-neutral-500">{col.ctaSubtext}</p>
+                )}
+              </div>
+            )}
           </div>
         </div>
       ))}
     </div>
 
-    <!-- CTA -->
-    {ctaText && ctaHref && (
-      <div class="mt-16 text-center" data-animate="up">
-        <a
-          href={ctaHref}
-          class="inline-flex items-center gap-2 rounded-xl bg-green-600 px-8 py-4 font-body text-base font-medium text-white shadow-sm transition-all duration-200 hover:bg-green-800 hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600"
-        >
-          {ctaText}
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
-        </a>
-      </div>
-    )}
   </div>
 </section>

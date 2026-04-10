@@ -31,21 +31,21 @@ const { socialLinks } = siteConfig;
       headline="Premium Hanfanbau aus dem Gurktal"
       subline="Hochwertige Cannabisrohstoffe und Extrakte – vom Anbau bis zum fertigen Produkt."
       images={[
-        { src: '/images/hero1.jpeg', alt: 'Cannabis-Ernte im Gurktal bei Sonnenuntergang' },
-        { src: '/images/hero2.jpeg', alt: 'Blick über Cannabis-Felder mit Bergpanorama' },
+        { src: '/images/Hero1.webp', alt: 'Cannabis-Ernte im Gurktal bei Sonnenuntergang' },
+        { src: '/images/Hero2.webp', alt: 'Blick über Cannabis-Felder mit Bergpanorama' },
       ]}
     />
 
     <WhoWeAreSection
       heading="Mountain Green"
-      text="Vertikal integrierter Produzent hochwertiger Cannabis-Rohstoffe und Extrakte für Medizin, Industrie und Konsumprodukte – vom Anbau bis zur marktfähigen Endlösung."
+      text="Produzent hochwertiger Cannabisrohstoffe und Extrakte für Medizin, Industrie und Konsumprodukte – mit integrierter Wertschöpfung vom Anbau bis zu marktfähigen Produkten."
       ctaText="Mehr erfahren"
       ctaHref="#leistungen"
     />
 
     <AboutSection
-      heading="Woher kommen wir?"
-      text="Mountain Green entstand aus einem europäischen Netzwerk von Cannabis-Pionieren mit Erfahrung in Landwirtschaft, Vertrieb und Kapitalmärkten. Das Projekt verbindet moderne Agrartechnologie mit professioneller Weiterverarbeitung."
+      heading="Kompetente Wertschöpfungskette"
+      text="Mountain Green arbeitet mit spezialisierten Partnern entlang der gesamten Wertschöpfungskette der Cannabispflanze. Der Anbau und die Extraktion erfolgen gemeinsam mit erfahrenen Produzenten, die moderne Agrartechnologie mit schonender CO₂-Extraktion verbinden. Für die Entwicklung marktfähiger Produkte kooperieren wir mit Herstellern, die natürliche Wirkstoffe mit moderner Forschung kombinieren und daraus hochwertige Gesundheits- und Kosmetikprodukte entwickeln."
       locationLabel="Standort Gurktal, Kärnten"
       locationDetail="Der Standort im Gurktal bietet ideale klimatische Bedingungen für hochwertigen Cannabis-Anbau."
       ctaText="Kontakt aufnehmen"
@@ -53,35 +53,36 @@ const { socialLinks } = siteConfig;
     />
 
     <ServicesSection
-      heading="Unsere Leistungen"
-      ctaText="Jetzt Partner werden"
+      heading="Integrierte Cannabis-Produktion"
+      ctaText="Jetzt Mountain Green Partner werden"
       ctaHref="/kontakt"
       services={[
         {
           icon: "sprout",
           title: "Anbau",
-          description: "Professioneller Cannabis-Anbau unter kontrollierten Bedingungen. Fokus auf stabile Erträge, hohe Pflanzenqualität und nachvollziehbare Herkunft gemäß modernen Agrarstandards.",
-          imagePlaceholder: "Bild: Cannabis-Anbau"
+          description: "Professioneller Cannabis-Anbau unter kontrollierten Bedingungen mit Fokus auf hohe Pflanzenqualität, stabile Erträge und vollständige Rückverfolgbarkeit. Moderne Agrartechnologie, sorgfältige Sortenauswahl und standardisierte Anbauprozesse bilden die Grundlage für hochwertige Biomasse.",
+          imageSrc: "/images/Anbau1.webp",
+          imageAlt: "Cannabis-Anbau bei Mountain Green"
         },
         {
           icon: "flask",
           title: "Veredelung",
-          description: "Hochwertige Cannabis-Extrakte und Rohstoffe aus geernteter Biomasse. Standardisierte Öle, Extrakte und Inhaltsstoffe mit gleichbleibender industrieller Qualität.",
-          imagePlaceholder: "Bild: Extraktionsprozess"
+          description: "Schonende Verarbeitung der geernteten Biomasse zu hochwertigen Cannabis-Extrakten und Rohstoffen. Moderne CO₂-Extraktion, präzise Laboranalysen sowie standardisierte Produktionsprozesse gewährleisten gleichbleibende Qualität nach internationalen Qualitätsstandards.",
+          imageSrc: "/images/Veredelung1.webp",
+          imageAlt: "Veredelung und Extraktion bei Mountain Green"
         },
         {
           icon: "package",
           title: "Produktion & Verkauf",
-          description: "Marktfähige Cannabisprodukte für Handel, Gesundheitsbereich und Markenlösungen. Vertrieb über Partner-Netzwerke und White-Label-Kanäle.",
-          imagePlaceholder: "Bild: Fertige Produkte"
+          description: "Entwicklung und Herstellung marktfähiger Cannabisprodukte für Handel, Gesundheitsbereich und Markenlösungen. Produktion nach GMP- und ISO-konformen Qualitätsstandards sowie Vertrieb über Partnernetzwerke und White-Label-Programme.",
+          imageSrc: "/images/Produktion1.webp",
+          imageAlt: "Fertige Cannabis-Produkte von Mountain Green"
         }
       ]}
     />
 
     <BenefitsSection
-      sectionHeading="Für Partner und Konsumenten"
-      ctaText="Angebot anfragen"
-      ctaHref="/kontakt"
+      sectionHeading="Erfahren Sie, wie Sie an der Cannabis-Wertschöpfung teilnehmen können"
       b2b={{
         badge: "B2B",
         heading: "White-Label & Partnerlösungen",
@@ -91,7 +92,10 @@ const { socialLinks } = siteConfig;
           "Standardisierte Extrakte",
           "White-Label-Produktion unter eigener Marke",
           "Schneller Markteinstieg"
-        ]
+        ],
+        ctaText: "Partnerangebot anfragen",
+        ctaHref: "/kontakt",
+        ctaSubtext: "White-Label Produktion ab kleinen Stückzahlen"
       }}
       b2c={{
         badge: "B2C",
@@ -102,7 +106,10 @@ const { socialLinks } = siteConfig;
           "Natürliche Pflanzenstoffe",
           "Moderne Verarbeitungstechnologie",
           "Wohlbefinden, Balance und Lifestyle"
-        ]
+        ],
+        ctaText: "Produkte entdecken",
+        ctaHref: "/kontakt",
+        ctaSubtext: "Direkt vom Produzenten"
       }}
     />
   </main>
