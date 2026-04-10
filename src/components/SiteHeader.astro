@@ -3,13 +3,11 @@ interface MenuItem {
   label: string;
   href: string;
 }
-
 interface Props {
   logoSrc: string;
   logoAlt: string;
   menuItems: MenuItem[];
 }
-
 const { logoSrc, logoAlt, menuItems } = Astro.props;
 ---
 
@@ -25,7 +23,6 @@ const { logoSrc, logoAlt, menuItems } = Astro.props;
         id="header-logo"
       />
     </a>
-
     <button
       id="menu-toggle"
       type="button"
@@ -46,19 +43,12 @@ const { logoSrc, logoAlt, menuItems } = Astro.props;
     </button>
   </div>
 
-  <nav
-    id="mobile-menu"
-    class="hidden border-t border-green-100 bg-[#F7F7F5]"
-    aria-label="Hauptnavigation"
-  >
+  <nav id="mobile-menu" class="hidden border-t border-green-100 bg-[#F7F7F5]" aria-label="Hauptnavigation">
     <div class="mx-auto max-w-6xl px-6 sm:px-8 lg:px-12">
       <ul class="flex flex-col items-end divide-y divide-green-50" role="list">
         {menuItems.map((item) => (
           <li class="w-auto">
-            <a
-              href={item.href}
-              class="block py-4 pl-8 text-base font-medium text-green-800 transition-colors hover:text-green-600"
-            >
+            <a href={item.href} class="block py-4 pl-8 text-base font-medium text-green-800 transition-colors hover:text-green-600">
               {item.label}
             </a>
           </li>
@@ -90,11 +80,11 @@ const { logoSrc, logoAlt, menuItems } = Astro.props;
 </style>
 
 <script>
+  // Hamburger toggle
   const toggle = document.getElementById('menu-toggle')!;
-  const menu = document.getElementById('mobile-menu')!;
-  const iconMenu = document.getElementById('icon-menu')!;
+  const menu  = document.getElementById('mobile-menu')!;
+  const iconMenu  = document.getElementById('icon-menu')!;
   const iconClose = document.getElementById('icon-close')!;
-
   toggle.addEventListener('click', () => {
     const isOpen = menu.classList.toggle('hidden');
     toggle.setAttribute('aria-expanded', String(!isOpen));
@@ -102,32 +92,44 @@ const { logoSrc, logoAlt, menuItems } = Astro.props;
     iconClose.classList.toggle('hidden');
   });
 
-  const header = document.getElementById('site-header')!;
-  const bar = document.getElementById('announcement-bar');
+  // ── Fixed nav: compensate height + scroll behaviour ──────────────────
+  const header     = document.getElementById('site-header')!;
+  const navWrapper = document.getElementById('nav-wrapper');
+  const bar        = document.getElementById('announcement-bar');
+  const mainEl     = document.getElementById('main-content') ?? document.querySelector('main');
 
-  // Cache bar height once before any animation
+  // Measure once after paint so we get real heights
+  requestAnimationFrame(() => {
+    const totalH = navWrapper ? navWrapper.offsetHeight : header.offsetHeight;
+    if (mainEl) (mainEl as HTMLElement).style.paddingTop = totalH + 'px';
+  });
+
+  // Cache bar height before any transforms
   const barHeight = bar ? bar.offsetHeight : 0;
 
-  let ticking = false;
+  let ticking    = false;
   let isScrolled = false;
-  let barHidden = false;
+  let barHidden  = false;
 
   window.addEventListener('scroll', () => {
     if (ticking) return;
     ticking = true;
     requestAnimationFrame(() => {
       const y = window.scrollY;
-      const shouldScrolled = y > 40;
-      const shouldBarHidden = y > 10;
+      const shouldScrolled  = y > 40;
+      const shouldBarHidden = y > barHeight;
 
+      // Toggle compact header (CSS class, no inline style = no transition conflict)
       if (shouldScrolled !== isScrolled) {
         header.classList.toggle('is-scrolled', shouldScrolled);
         isScrolled = shouldScrolled;
       }
 
-      if (bar && shouldBarHidden !== barHidden) {
-        bar.style.height = shouldBarHidden ? '0' : `${barHeight}px`;
-        bar.style.opacity = shouldBarHidden ? '0' : '1';
+      // Slide entire wrapper up by barHeight — bar leaves viewport, header stays at top
+      if (navWrapper && shouldBarHidden !== barHidden) {
+        navWrapper.style.transform = shouldBarHidden
+          ? `translateY(-${barHeight}px)`
+          : 'translateY(0)';
         barHidden = shouldBarHidden;
       }
 

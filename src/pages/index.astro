@@ -16,7 +16,7 @@ const { socialLinks } = siteConfig;
   title="Mountain Green – Cannabis-Rohstoffe & Extrakte"
   description="Mountain Green ist ein vertikal integrierter Produzent hochwertiger Cannabis-Rohstoffe und Extrakte für Medizin, Industrie und Konsumprodukte."
 >
-  <div class="sticky top-0 z-40">
+  <div id="nav-wrapper" class="fixed left-0 right-0 top-0 z-40" style="transition: transform 0.35s ease;">
     {siteConfig.announcementBar.enabled && (
       <AnnouncementBar text={siteConfig.announcementBar.text} />
     )}
@@ -27,7 +27,7 @@ const { socialLinks } = siteConfig;
     />
   </div>
 
-  <main>
+  <main id="main-content">
     <HeroSection
       headline="Premium Hanfanbau aus dem Gurktal"
       subline="Hochwertige Cannabisrohstoffe und Extrakte – vom Anbau bis zum fertigen Produkt."

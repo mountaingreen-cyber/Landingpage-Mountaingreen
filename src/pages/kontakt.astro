@@ -11,7 +11,7 @@ const { socialLinks } = siteConfig;
   title="Kontakt – Mountain Green"
   description="Nehmen Sie Kontakt mit Mountain Green auf. Wir freuen uns auf Ihre Anfrage zu Cannabis-Rohstoffen, Extrakten und Partnerlösungen."
 >
-  <div class="sticky top-0 z-40">
+  <div id="nav-wrapper" class="fixed left-0 right-0 top-0 z-40" style="transition: transform 0.35s ease;">
     {siteConfig.announcementBar.enabled && (
       <AnnouncementBar text={siteConfig.announcementBar.text} />
     )}
