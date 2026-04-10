@@ -15,9 +15,9 @@ const { logoSrc, logoAlt, menuItems } = Astro.props;
 
 <header
   id="site-header"
-  class="sticky top-0 z-40 bg-[#F7F7F5]/95 backdrop-blur-sm shadow-sm transition-all duration-300"
+  class="sticky top-0 z-40 bg-[#F7F7F5]/95 backdrop-blur-sm shadow-sm"
 >
-  <div class="relative mx-auto flex max-w-6xl items-center justify-center px-6 py-4 transition-all duration-300 sm:px-8 lg:px-12" id="header-inner">
+  <div class="header-inner relative mx-auto flex max-w-6xl items-center justify-center px-6 sm:px-8 lg:px-12" id="header-inner">
     <!-- Logo (zentriert) -->
     <a href="/" class="block">
       <img
@@ -25,7 +25,7 @@ const { logoSrc, logoAlt, menuItems } = Astro.props;
         alt={logoAlt}
         width="160"
         height="160"
-        class="h-[160px] w-[160px] object-contain transition-all duration-300"
+        class="header-logo object-contain"
         id="header-logo"
       />
     </a>
@@ -74,6 +74,30 @@ const { logoSrc, logoAlt, menuItems } = Astro.props;
   </nav>
 </header>
 
+<style>
+  /* Default (large) state */
+  .header-inner {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    transition: padding 0.3s ease;
+  }
+  .header-logo {
+    height: 160px;
+    width: 160px;
+    transition: height 0.3s ease, width 0.3s ease;
+  }
+
+  /* Scrolled (compact) state — toggled by JS */
+  #site-header.is-scrolled .header-inner {
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+  }
+  #site-header.is-scrolled .header-logo {
+    height: 48px;
+    width: 48px;
+  }
+</style>
+
 <script>
   // Hamburger toggle
   const toggle = document.getElementById('menu-toggle')!;
@@ -89,38 +113,32 @@ const { logoSrc, logoAlt, menuItems } = Astro.props;
   });
 
   // Shrink header + hide announcement bar on scroll
-  const headerInner = document.getElementById('header-inner')!;
-  const logo = document.getElementById('header-logo')!;
+  const header = document.getElementById('site-header')!;
   const bar = document.getElementById('announcement-bar');
-
-  // Cache bar height once — avoids layout reflow on every scroll event
   const barHeight = bar ? bar.offsetHeight : 0;
 
   let ticking = false;
-  let prevScrolled = false;
-  let prevBarHidden = false;
+  let isScrolled = false;
+  let barHidden = false;
 
   window.addEventListener('scroll', () => {
     if (ticking) return;
     ticking = true;
+
     requestAnimationFrame(() => {
       const y = window.scrollY;
-      const scrolled = y > 40;
-      const barHidden = y > 10;
+      const shouldScrolled = y > 40;
+      const shouldBarHidden = y > 10;
 
-      // Only write to DOM when state actually changes — eliminates flicker
-      if (scrolled !== prevScrolled) {
-        headerInner.style.paddingTop = scrolled ? '0.25rem' : '';
-        headerInner.style.paddingBottom = scrolled ? '0.25rem' : '';
-        logo.style.height = scrolled ? '48px' : '';
-        logo.style.width = scrolled ? '48px' : '';
-        prevScrolled = scrolled;
+      if (shouldScrolled !== isScrolled) {
+        header.classList.toggle('is-scrolled', shouldScrolled);
+        isScrolled = shouldScrolled;
       }
 
-      if (bar && barHidden !== prevBarHidden) {
-        bar.style.marginTop = barHidden ? `-${barHeight}px` : '0';
-        bar.style.opacity = barHidden ? '0' : '1';
-        prevBarHidden = barHidden;
+      if (bar && shouldBarHidden !== barHidden) {
+        bar.style.marginTop = shouldBarHidden ? `-${barHeight}px` : '0';
+        bar.style.opacity = shouldBarHidden ? '0' : '1';
+        barHidden = shouldBarHidden;
       }
 
       ticking = false;
