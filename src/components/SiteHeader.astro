@@ -93,23 +93,37 @@ const { logoSrc, logoAlt, menuItems } = Astro.props;
   const logo = document.getElementById('header-logo')!;
   const bar = document.getElementById('announcement-bar');
 
+  // Cache bar height once — avoids layout reflow on every scroll event
+  const barHeight = bar ? bar.offsetHeight : 0;
+
+  let ticking = false;
+  let prevScrolled = false;
+  let prevBarHidden = false;
+
   window.addEventListener('scroll', () => {
-    const y = window.scrollY;
-    const scrolled = y > 40;
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      const y = window.scrollY;
+      const scrolled = y > 40;
+      const barHidden = y > 10;
 
-    headerInner.style.paddingTop = scrolled ? '0.25rem' : '';
-    headerInner.style.paddingBottom = scrolled ? '0.25rem' : '';
-    logo.style.height = scrolled ? '48px' : '';
-    logo.style.width = scrolled ? '48px' : '';
-
-    if (bar) {
-      if (y > 10) {
-        bar.style.marginTop = `-${bar.offsetHeight}px`;
-        bar.style.opacity = '0';
-      } else {
-        bar.style.marginTop = '0';
-        bar.style.opacity = '1';
+      // Only write to DOM when state actually changes — eliminates flicker
+      if (scrolled !== prevScrolled) {
+        headerInner.style.paddingTop = scrolled ? '0.25rem' : '';
+        headerInner.style.paddingBottom = scrolled ? '0.25rem' : '';
+        logo.style.height = scrolled ? '48px' : '';
+        logo.style.width = scrolled ? '48px' : '';
+        prevScrolled = scrolled;
       }
-    }
+
+      if (bar && barHidden !== prevBarHidden) {
+        bar.style.marginTop = barHidden ? `-${barHeight}px` : '0';
+        bar.style.opacity = barHidden ? '0' : '1';
+        prevBarHidden = barHidden;
+      }
+
+      ticking = false;
+    });
   }, { passive: true });
 </script>
