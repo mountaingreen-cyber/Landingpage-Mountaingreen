@@ -11,15 +11,16 @@ const { socialLinks } = siteConfig;
   title="Kontakt – Mountain Green"
   description="Nehmen Sie Kontakt mit Mountain Green auf. Wir freuen uns auf Ihre Anfrage zu Cannabis-Rohstoffen, Extrakten und Partnerlösungen."
 >
-  {siteConfig.announcementBar.enabled && (
-    <AnnouncementBar text={siteConfig.announcementBar.text} />
-  )}
-
-  <SiteHeader
-    logoSrc="/images/logo/mountaingreen_logo.webp"
-    logoAlt="Mountain Green Logo"
-    menuItems={[{ label: 'Login', href: 'https://app.mountaingreen.at' }, { label: 'Kontakt', href: '/kontakt' }]}
-  />
+  <div class="sticky top-0 z-40">
+    {siteConfig.announcementBar.enabled && (
+      <AnnouncementBar text={siteConfig.announcementBar.text} />
+    )}
+    <SiteHeader
+      logoSrc="/images/logo/mountaingreen_logo.webp"
+      logoAlt="Mountain Green Logo"
+      menuItems={[{ label: 'Login', href: 'https://app.mountaingreen.at' }, { label: 'Kontakt', href: '/kontakt' }]}
+    />
+  </div>
 
   <main class="py-24 sm:py-32">
     <div class="mx-auto max-w-3xl px-6 sm:px-8 lg:px-12">

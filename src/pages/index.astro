@@ -16,15 +16,16 @@ const { socialLinks } = siteConfig;
   title="Mountain Green – Cannabis-Rohstoffe & Extrakte"
   description="Mountain Green ist ein vertikal integrierter Produzent hochwertiger Cannabis-Rohstoffe und Extrakte für Medizin, Industrie und Konsumprodukte."
 >
-  {siteConfig.announcementBar.enabled && (
-    <AnnouncementBar text={siteConfig.announcementBar.text} />
-  )}
-
-  <SiteHeader
-    logoSrc="/images/logo/mountaingreen_logo.webp"
-    logoAlt="Mountain Green Logo"
-    menuItems={[{ label: 'Login', href: 'https://app.mountaingreen.at' }, { label: 'Kontakt', href: '/kontakt' }]}
-  />
+  <div class="sticky top-0 z-40">
+    {siteConfig.announcementBar.enabled && (
+      <AnnouncementBar text={siteConfig.announcementBar.text} />
+    )}
+    <SiteHeader
+      logoSrc="/images/logo/mountaingreen_logo.webp"
+      logoAlt="Mountain Green Logo"
+      menuItems={[{ label: 'Login', href: 'https://app.mountaingreen.at' }, { label: 'Kontakt', href: '/kontakt' }]}
+    />
+  </div>
 
   <main>
     <HeroSection
