@@ -114,7 +114,7 @@ Zentrale Stelle fuer aenderbare Inhalte:
 - Shadow: `shadow-sm` fuer Tiefe
 
 ### Stil-Direktiven
-- Hell und clean: weisser Hintergrund (#F7F7F5), viel Whitespace
+- Hell und clean: weisser Hintergrund (#F7F7F5)
 - Gruene Akzente gezielt -- kein Overuse
 - Keine dunklen Hintergruende ausser Footer
 - Mobile-first, responsiv ab 320px

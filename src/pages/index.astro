@@ -30,7 +30,7 @@ const { socialLinks } = siteConfig;
   <main id="main-content">
     <HeroSection
       headline="Premium Hanfanbau aus dem Gurktal"
-      subline="Hochwertige Cannabisrohstoffe und Extrakte – vom Anbau bis zum fertigen Produkt."
+      subline="Hochwertige Cannabisrohstoffe und Extrakte<br>Vom Anbau bis zum fertigen Produkt."
       images={[
         { src: '/images/hero1.webp', alt: 'Cannabis-Ernte im Gurktal bei Sonnenuntergang' },
         { src: '/images/hero2.webp', alt: 'Blick über Cannabis-Felder mit Bergpanorama' },
@@ -119,6 +119,10 @@ const { socialLinks } = siteConfig;
     companyName="Mountain Green"
     imprintHref="/impressum"
     imprintLabel="Impressum"
+    legalLinks={[
+      { label: 'Datenschutzerklärung', href: '/datenschutz' },
+      { label: 'AGB', href: '/agb' },
+    ]}
     socialLinks={socialLinks}
   />
 </BaseLayout>

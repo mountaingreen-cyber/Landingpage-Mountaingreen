@@ -1,0 +1,58 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AnnouncementBar from '../components/AnnouncementBar.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import Footer from '../components/Footer.astro';
+import { siteConfig } from '../config/site';
+const { socialLinks } = siteConfig;
+---
+
+<BaseLayout
+  title="AGB – Mountain Green GmbH"
+  description="Allgemeine Geschäftsbedingungen der Mountain Green GmbH."
+>
+  <div id="nav-wrapper" class="fixed left-0 right-0 top-0 z-40" style="transition: transform 0.35s ease;">
+    {siteConfig.announcementBar.enabled && (
+      <AnnouncementBar text={siteConfig.announcementBar.text} />
+    )}
+    <SiteHeader
+      logoSrc="/images/logo/mountaingreen_logo.webp"
+      logoAlt="Mountain Green Logo"
+      menuItems={[{ label: 'Login', href: 'https://app.mountaingreen.at' }, { label: 'Kontakt', href: '/kontakt' }]}
+    />
+  </div>
+
+  <main class="py-24 sm:py-32">
+    <div class="mx-auto max-w-3xl px-6 sm:px-8 lg:px-12">
+      <div data-animate="up">
+        <h1
+          class="font-heading text-3xl font-bold tracking-tight text-green-800 sm:text-4xl"
+          style="letter-spacing: -0.02em;"
+        >
+          Allgemeine Geschäftsbedingungen
+        </h1>
+
+        <div class="mt-10 space-y-8 text-base text-neutral-700" style="line-height: 1.7;">
+          <p>
+            Diese Seite wird in Kürze mit den vollständigen Allgemeinen Geschäftsbedingungen ergänzt.
+          </p>
+          <p>
+            Bei Fragen wenden Sie sich bitte an:<br />
+            <a href="mailto:office@mountaingreen.at" class="text-green-600 underline decoration-green-600/30 underline-offset-2 hover:decoration-green-600">office@mountaingreen.at</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <Footer
+    companyName="Mountain Green"
+    imprintHref="/impressum"
+    imprintLabel="Impressum"
+    legalLinks={[
+      { label: 'Datenschutzerklärung', href: '/datenschutz' },
+      { label: 'AGB', href: '/agb' },
+    ]}
+    socialLinks={socialLinks}
+  />
+</BaseLayout>

@@ -18,7 +18,7 @@ interface Props {
 const { sectionHeading, b2b, b2c } = Astro.props;
 ---
 
-<section aria-labelledby="benefits-heading" class="bg-[#F7F7F5] py-24 sm:py-32">
+<section aria-labelledby="benefits-heading" class="bg-[#F7F7F5] py-16 sm:py-24">
   <div class="mx-auto max-w-6xl px-6 sm:px-8 lg:px-12">
     <!-- Section Header -->
     <div data-animate="up" class="text-center">
@@ -35,7 +35,7 @@ const { sectionHeading, b2b, b2c } = Astro.props;
     </div>
 
     <!-- Two Column Layout -->
-    <div class="mt-16 grid gap-8 lg:grid-cols-2">
+    <div class="mt-12 grid gap-8 lg:grid-cols-2">
       {[b2b, b2c].map((col, i) => (
         <div data-animate={i === 0 ? 'left' : 'right'} data-delay={String(i + 1)} class="h-full">
           <div class="flex h-full flex-col rounded-2xl border border-green-100 bg-green-50 p-8 sm:p-10">

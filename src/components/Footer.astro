@@ -6,14 +6,20 @@ interface SocialLinks {
   youtube?: string;
 }
 
+interface LegalLink {
+  label: string;
+  href: string;
+}
+
 interface Props {
   companyName: string;
   imprintHref: string;
   imprintLabel: string;
+  legalLinks?: LegalLink[];
   socialLinks?: SocialLinks;
 }
 
-const { companyName, imprintHref, imprintLabel, socialLinks } = Astro.props;
+const { companyName, imprintHref, imprintLabel, legalLinks = [], socialLinks } = Astro.props;
 const currentYear = new Date().getFullYear();
 ---
 
@@ -60,7 +66,7 @@ const currentYear = new Date().getFullYear();
 
         <!-- Links -->
         <nav aria-label="Footer-Navigation">
-          <ul class="flex gap-6" role="list">
+          <ul class="flex flex-wrap gap-6" role="list">
             <li>
               <a
                 href={imprintHref}
@@ -69,6 +75,16 @@ const currentYear = new Date().getFullYear();
                 {imprintLabel}
               </a>
             </li>
+            {legalLinks.map((link) => (
+              <li>
+                <a
+                  href={link.href}
+                  class="text-sm text-green-100/70 transition-colors duration-200 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-100"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
           </ul>
         </nav>
       </div>

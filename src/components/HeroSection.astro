@@ -41,9 +41,8 @@ const { headline, subline, images } = Astro.props;
       <p
         class="mx-auto mt-4 max-w-xl text-lg text-amber-100/90 drop-shadow-md sm:text-xl"
         style="text-shadow: 0 1px 8px rgba(0,0,0,0.5); line-height: 1.7;"
-      >
-        {subline}
-      </p>
+        set:html={subline}
+      />
     </div>
   </div>
 </section>
